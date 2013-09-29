@@ -1,0 +1,21 @@
+extends ../layout
+
+block content
+
+	a#mozillaPersonaLogin(href="#") Login with Mozilla
+	span &nbsp;|&nbsp;
+	a(href="/user/facebook/request") Login with Facebook
+	span &nbsp;|&nbsp;
+	a(href="/user/register") Register via Email
+		
+	form(action="/user/session", method="post")
+		+print-errors()
+		ol
+			li
+				label(for="email") Username
+				input(type="text", name="email", id="email", value=input.email)
+			li
+				label(for="password") Password
+				input(type="password", name="password", id="password", value=input.password)
+			li.footer.buttons
+				input(type="submit", class="positive", value="login")

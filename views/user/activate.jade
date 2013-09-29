@@ -1,0 +1,18 @@
+extends ../layout
+
+block content
+
+	h1 Activate Your Account
+	- var submit_path = "/user/" + input._id + "/activate/" + input.activationPad
+	form(method="post", action=submit_path)
+		input(type="hidden", name="_method", value="patch")
+		+print-errors()
+		ol
+			li
+				label(for="email") Email
+				input(type="email", name="email", id="email", value=input.email)
+			li
+				label(for="password") Password
+				input(type="password", name="password", id="name", value=input.password)
+			li
+				input(type="submit", class="positive", value="Activate and Log In")

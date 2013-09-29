@@ -1,0 +1,29 @@
+mixin print-errors
+	- if (validation)
+		ul.errors
+			each error, field in validation
+				li
+					span.field= field
+					span.msg= error
+
+doctype 5
+html
+	head
+		meta(http-equiv="X-UA-Compatible", content="IE=Edge")
+		title SyncItServ
+		script(data-main="/js/main", src="/vendor-bower/requirejs/require.js")
+	body
+		div
+			if (user)
+				if (user.method == 'mozilla')
+					span#mozillaPersona
+						input#mozillaPersonaUser(value=user.email)
+						a#mozillaPersonaLogout(href="#") Mozilla Logout
+				else
+					a#passwordLogout(href="#") Logout
+			else
+				span#mozillaPersona
+					input#mozillaPersonaUser(value=useremail)
+					a(href="/user/session") login
+			
+		block content
